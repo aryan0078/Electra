@@ -1,10 +1,10 @@
 {   
     "token": "your bot token from the dev portal",
     "prefix": "!",
-    "cocToken": "",
-    "clashroyaletoken": "",
-	"brawlstarstoken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjM1NjZmNDllLTJjZmItNDFlNC1iMjIxLTMxNGNkN2U0NGEwNyIsImlhdCI6MTYxOTg4NDY0NSwic3ViIjoiZGV2ZWxvcGVyLzA3NjZhYTY4LTI4MGYtN2I0Ni1hMTlmLTZmM2MyYzIxYWM0ZCIsInNjb3BlcyI6WyJicmF3bHN0YXJzIl0sImxpbWl0cyI6W3sidGllciI6ImRldmVsb3Blci9zaWx2ZXIiLCJ0eXBlIjoidGhyb3R0bGluZyJ9LHsiY2lkcnMiOlsiODkuMTQ0LjIxMC4xMTgiXSwidHlwZSI6ImNsaWVudCJ9XX0.UEtJ6sOy0l0-vVM8SyhscFmowiWdofzeSzA3-E0qW7pxR7fnY19nUP_v_cFsoUWHyhjLlfT97PMGtRdwoWeJBA",
-    "database": "",
-    "randomorg": "05f7d866-e53e-43a2-ae82-0064155bab1b"
+    "cocToken": "", // get it from here: https://developer.clashofclans.com/#/
+    "clashroyaletoken": "", // get it from here: https://developer.clashroyale.com/#/	
+    "brawlstarstoken": "", // get it from here: https://developer.brawlstars.com/#/
+    "database": "",	// get it from here: https://mongodb.com	
+    "randomorg": ""	// get it from here: https://api.random.org/dashboard
 
 }
