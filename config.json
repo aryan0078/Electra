@@ -1,10 +1,10 @@
 {   
     "token": "your bot token from the dev portal",
     "prefix": "!",
-    "cocToken": "", // get it from here: https://developer.clashofclans.com/#/
-    "clashroyaletoken": "", // get it from here: https://developer.clashroyale.com/#/	
-    "brawlstarstoken": "", // get it from here: https://developer.brawlstars.com/#/
-    "database": "",	// get it from here: https://mongodb.com	
-    "randomorg": ""	// get it from here: https://api.random.org/dashboard
+    "cocToken": "", //  https://developer.clashofclans.com/#/
+    "clashroyaletoken": "", //  https://developer.clashroyale.com/#/	
+    "brawlstarstoken": "", //  https://developer.brawlstars.com/#/
+    "database": "",	//  https://mongodb.com	
+    "randomorg": ""	//  https://api.random.org/dashboard
 
 }
