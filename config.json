@@ -1,0 +1,10 @@
+{   
+    "token": "your bot token",
+    "prefix": "!",
+    "cocToken": "https://developer.clashofclans.com/#/ - get your key from here",
+    "clashroyaletoken": "https://royaleapi.com/ - get your key from here",
+	"brawlstarstoken": "https://developer.brawlstars.com/#/ - get your key from here",
+    "database": "https://www.mongodb.com/ - get your key from here",
+    "randomorg": "https://api.random.org/dashboard - get your key from here"
+
+}
