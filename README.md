@@ -8,3 +8,4 @@ QUICK Start:
 
 Go into Index and change owners, so you can enjoy all commands ;)
 For errors DM me on Discord
+Fill out the tokens in config.json!
