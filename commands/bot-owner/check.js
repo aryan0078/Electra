@@ -13,7 +13,7 @@ module.exports = {
 
 	async execute({ message, args, client }) {
 		const check = [];
-		const userID = args[0]?.match(/\d+/)?.[0];
+		const userID = args[0].match(/\d+/)[0];
 
 		const user = client.users.cache.get(userID);
 		if (!user) {

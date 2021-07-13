@@ -17,7 +17,7 @@ module.exports = {
 		const commands = await commandStats.find().sort({ uses: -1 });
 
 		const categoryObj = commands.reduce((prev, cmd) => {
-			const category = client.commands.get(cmd.name)?.category;
+			const category = client.commands.get(cmd.name).category;
 			if (category && category !== 'Owner Only') prev[category] = (prev[category] || 0) + cmd.uses;
 			return prev;
 		}, {});
@@ -30,7 +30,7 @@ module.exports = {
 
 		const command_list = commands.filter(cmd => {
 			const command = client.commands.get(cmd.name);
-			return command && command?.category !== 'Owner Only' && !command?.ownerOnly;
+			return command && command.category !== 'Owner Only' && !command.ownerOnly;
 		});
 
 		const pages = [

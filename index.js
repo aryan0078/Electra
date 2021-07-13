@@ -28,13 +28,36 @@ global.Discord = Discord;
 global.mongoose = require('mongoose');
 const Ajv = require('ajv');
 const ajv = new Ajv();
-let configJSON = {};
+let configJSON = {
+  database:'mongodb+srv://flappy:1a2b3c4d@problem.5rcbd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+	prefix: '!',
+  token:'ODU3NzEyMzUxNDQwMjczNDQ5.YNTk4A.Mj_Z6o-32nA8OmDr_wlxF5uHDaU',
+	collections: ['commands', 'aliases'],
+	handlers: ['event', 'login', 'database', 'utils', 'prototypes', 'command'],
+	commandGroups: [
+		'bot-owner', 'clash-of-clans', 'custom-commands', 'economy', 'modmail', 'giveaway',
+		'emojis', 'info', 'invites', 'moderation', 'roles', 'search', 'suggestions',
+		'utility', 'welcome', 'clash-royale', 'brawl-stars', 'youtube', 'ticket', 'help', 'support-server'
+	],
+	eventGroups: [
+		'command', 'logging', 'prefix', 'invites', 'kick', 'ticket', 'modmail',
+		'reactionRoles', 'locks', 'giveaway', 'guildBlacklist', 'autoBalance', 'role'
+	],
+	utils: ['settings', 'log', 'automod', 'temp', 'mute', 'invites', 'samePerson',
+		'userBlacklist', 'guildBlacklist', 'lock', 'giveway', 'random', 'getResponse',
+		'table', 'wrap', 'channelBlock', 'remindScheduler', 'clanLogger', 'youtube', 'categoryBlock'],
+	owners: { 'Koni': '578678204890349594'},
+	color: 9677018,
+	blacklists: true,
+	hold: new Set(),
+	logging: true
+};
 
-try {
+/* try {
 	configJSON = require('./config.json');
 } catch (err) {
 	return console.error(err);
-}
+} */
 
 const config = Object.assign({}, {
 	prefix: '!',
@@ -73,7 +96,7 @@ const validateConfig = ajv.compile({
 	required: ['token']
 });
 
-const configValid = validateConfig(config);
+const configValid = validateConfig( configJSON);
 
 if (!configValid) return console.error('Config invalid:', ajv.errorsText(validateConfig.errors));
 
@@ -122,7 +145,7 @@ config.collections.forEach(collection => client[collection] = new Discord.Collec
 const messageEvent = require('./events/command/message');
 client.ws.on('INTERACTION_CREATE', async res => {
 	const message = Object.assign({}, res);
-	if (!res.member?.user?.id) return;
+	if (!res.member.user.id) return;
 	try {
 		message.guild = client.guilds.cache.get(message.guild_id);
 		message.channel = client.channels.cache.get(res.channel_id);

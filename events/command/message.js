@@ -104,11 +104,11 @@ const runPermissionCheck = async (message, client, command, settings) => {
 		return true;
 	}
 
-	const clientPermissions = command.clientPermissions?.length
+	const clientPermissions = command.clientPermissions.length
 		? message.channel.permissionsFor(client.user)
 			.missing(
 				command.clientPermissions.reduce((pre, bit) => {
-					if (typeof bit === 'string') pre |= Permissions.FLAGS[bit] ?? 0;
+					if (typeof bit === 'string') pre |= Permissions.FLAGS[bit] &&0;
 					return pre |= bit;
 				}, 0)
 			)
@@ -119,11 +119,11 @@ const runPermissionCheck = async (message, client, command, settings) => {
 		return true;
 	}
 
-	const userPermissions = command.userPermissions?.length
+	const userPermissions = command.userPermissions.length
 		? message.channel.permissionsFor(message.author)
 			.missing(
 				command.userPermissions.reduce((pre, bit) => {
-					if (typeof bit === 'string') pre |= Permissions.FLAGS[bit] ?? 0;
+					if (typeof bit === 'string') pre |= Permissions.FLAGS[bit] && 0;
 					return pre |= bit;
 				}, 0)
 			)
@@ -163,7 +163,7 @@ module.exports = async (client, message, fresh = true) => {
 	const prefix = settings.prefix || client.config.prefix;
 	// Parse Command
 	const parsed = parseCommand(message, client, prefix);
-	if (!parsed?.command && !parsed?.prefix) return;
+	if (!parsed.command && !parsed.prefix) return;
 
 	// Custom Commands
 	if (!parsed.command && settings.ccommands) {
