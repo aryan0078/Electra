@@ -41,7 +41,7 @@ module.exports = {
 			    **[TH2 Server](https://discord.gg/9zqArakDGM)**
 
 				[Clan Link Here](https://link.clashofclans.com/en?action=OpenClanProfile&tag=${encodeURIComponent(data.tag)})
-				${data.labels.map(m => labels[m.name]).join(' ') ?? ''}
+				${data.labels.map(m => labels[m.name]).join(' ') && ''}
 
 				**Description:**
 				\`${data.description}\`

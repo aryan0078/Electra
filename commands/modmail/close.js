@@ -48,7 +48,7 @@ module.exports = {
 				`\`${message.author.tag}\``,
 				'',
 				'**User\'s thread:**',
-				`\`${user.tag ?? thread.recipient}\``
+				`\`${user.tag && thread.recipient}\``
 			]);
 
 		await message.guild.log({

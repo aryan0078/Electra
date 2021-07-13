@@ -33,7 +33,7 @@ module.exports = async (client, channel) => {
 					`\`${audit.executor.tag}\``,
 					'',
 					'**Category:**',
-					`\`${channel.parent.name ?? 'None'}\``,
+					`\`${channel.parent.name && 'None'}\``,
 					'',
 					'**Channel:**',
 					`\`${channel.type === 'text' ? '#' : ''}${channel.name}\``

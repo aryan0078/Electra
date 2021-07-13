@@ -44,7 +44,7 @@ module.exports = {
 		const winner = winners[0];
 		if (!winner) return channel.send('No winner!');
 
-		giveaway.users = [...new Set([...giveaway.users ?? [], winner.id])];
+		giveaway.users = [...new Set([...giveaway.users && [], winner.id])];
 		await giveaway.save();
 
 		return channel.send(`🎉 **The new winner is ${winner}!**`);

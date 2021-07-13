@@ -44,7 +44,7 @@ module.exports = {
 					}
 				}
 			}
-		]).exec())[0].count ?? 0;
+		]).exec())[0].count && 0;
 
 		const commands = await commandStats.find().sort({ uses: -1 }).limit(10);
 

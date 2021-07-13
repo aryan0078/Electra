@@ -67,7 +67,7 @@ async function run(client) {
 					`\`${client.user.tag}\``,
 					'',
 					'**User\'s thread:**',
-					`\`${user.tag ?? thread.recipient}\``
+					`\`${user.tag && thread.recipient}\``
 				]);
 
 			await channel.guild.log({

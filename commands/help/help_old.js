@@ -95,10 +95,10 @@ module.exports = {
 				command.aliases.length ? command.aliases.map(alias => `\`${prefix}${alias}\``).join('\n') : '`None`',
 				'',
 				'<:gears:717436253376872500> **Usage**',
-				`\`${prefix}${command.name} ${command.usage ?? ''}\``,
+				`\`${prefix}${command.name} ${command.usage && ''}\``,
 				'',
 				'<:message:798994744649711673> **Example**',
-				`\`${prefix}${command.name} ${command.example ?? ''}\``
+				`\`${prefix}${command.name} ${command.example && ''}\``
 			]);
 
 		return message.channel.send({ embed });
@@ -191,10 +191,10 @@ module.exports = {
 				command.aliases.length ? command.aliases.map(alias => `\`${prefix}${alias}\``).join('\n') : '`None`',
 				'',
 				'<:gears:717436253376872500> **Usage**',
-				`\`${prefix}${command.aliases[0] ?? command.name} ${command.usage ?? ''}\``,
+				`\`${prefix}${command.aliases[0] && command.name} ${command.usage && ''}\``,
 				'',
 				'<:message:798994744649711673> **Example**',
-				`\`${prefix}${command.aliases[0] ?? command.name} ${command.example ?? ''}\``
+				`\`${prefix}${command.aliases[0] && command.name} ${command.example && ''}\``
 			]);
 
 			await m.delete();

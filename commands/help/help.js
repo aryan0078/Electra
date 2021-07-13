@@ -51,10 +51,10 @@ module.exports = {
 				command.aliases.length ? command.aliases.map(alias => `\`${prefix}${alias}\``).join('\n') : '`None`',
 				'',
 				'**Usage**',
-				`\`${prefix}${command.name} ${command.usage ?? ''}\``,
+				`\`${prefix}${command.name} ${command.usage && ''}\``,
 				'',
 				'**Example**',
-				`\`${prefix}${command.name} ${command.example ?? ''}\``
+				`\`${prefix}${command.name} ${command.example && ''}\``
 			]);
 
 		return message.channel.send({ embed });

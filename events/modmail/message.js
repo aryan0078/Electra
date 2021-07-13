@@ -126,14 +126,14 @@ async function open(client, message) {
 				`\`${message.author.createdAt.toDateString()}\``,
 				'',
 				'**Server Join Date:**',
-				`\`${guild.member(message.author).joinedAt.toDateString() ?? 'None'}\``,
+				`\`${guild.member(message.author).joinedAt.toDateString() && 'None'}\``,
 				'',
 				'**Thread Count:**',
 				`\`${await Thread.countDocuments({ recipient: message.author.id })}\``,
 				'',
 				'**Roles in server:**',
 				guild.member(message.author).roles.cache.filter(role => role.id !== guild.id)
-					.map(role => role).join('\n') ?? 'None',
+					.map(role => role).join('\n') && 'None',
 
 				'',
 				'**Devices**',

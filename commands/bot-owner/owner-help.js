@@ -86,10 +86,10 @@ module.exports = {
 				command.aliases.length ? command.aliases.map(alias => `\`${alias}\``).join('\n') : '`None`',
 				'',
 				'**Usage**',
-				`\`${prefix}${command.name} ${command.usage ?? ''}\``,
+				`\`${prefix}${command.name} ${command.usage && ''}\``,
 				'',
 				'**Example**',
-				`\`${prefix}${command.name} ${command.example ?? ''}\``
+				`\`${prefix}${command.name} ${command.example && ''}\``
 			]);
 
 		return message.channel.send({ embed });
@@ -179,10 +179,10 @@ module.exports = {
 				command.aliases.length ? command.aliases.map(alias => `\`${alias}\``).join('\n') : '`None`',
 				'',
 				'**Usage**',
-				`\`${prefix}${command.aliases[0] ?? command.name} ${command.usage ?? ''}\``,
+				`\`${prefix}${command.aliases[0] && command.name} ${command.usage && ''}\``,
 				'',
 				'**Example**',
-				`\`${prefix}${command.aliases[0] ?? command.name} ${command.example ?? ''}\``
+				`\`${prefix}${command.aliases[0] && command.name} ${command.example && ''}\``
 			]);
 
 			return msg.edit({ embed });

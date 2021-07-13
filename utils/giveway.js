@@ -89,7 +89,7 @@ class GivewayManager {
 			return channel.send('**No winner for this giveaway!**');
 		}
 
-		doc.users = [...new Set([...doc.users ?? [], ...winners.map(u => u.id)])];
+		doc.users = [...new Set([...doc.users && [], ...winners.map(u => u.id)])];
 		await doc.save();
 		return this.showWinners(channel, winners);
 	}
