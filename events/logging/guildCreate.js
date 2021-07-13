@@ -47,7 +47,7 @@ module.exports = async (client, guild) => {
 			'**Have a great day!**'
 		]);
 
-	if (systemChannel?.permissionsFor(client.user).has(['EMBED_LINKS', 'SEND_MESSAGES'])) {
+	if (systemChannel.permissionsFor(client.user).has(['EMBED_LINKS', 'SEND_MESSAGES'])) {
 		await systemChannel.send({ embed: helpEmbed });
 	}
 
@@ -73,5 +73,5 @@ module.exports = async (client, guild) => {
 	const channel = client.channels.cache.get('458697028567923567'); // Admins Channel
 
 	console.log(`[NEW GUILD ADDED] (${guild.id}) | ${guild.name}`);
-	return channel?.send('**I joined a new guild!**', { embed });
+	return channel.send('**I joined a new guild!**', { embed });
 };

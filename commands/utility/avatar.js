@@ -12,7 +12,7 @@ module.exports = {
 	async execute({ message, args }) {
 		const embed = new Discord.MessageEmbed();
 
-		const matches = args[0]?.match(/\d+/) || [message.author.id];
+		const matches = args[0].match(/\d+/) || [message.author.id];
 		const user = await message.client.users.fetch(matches[0]).catch(() => null);
 		if (!user) return message.channel.send('Please provide a valid user!');
 

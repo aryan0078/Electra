@@ -28,7 +28,7 @@ module.exports = {
 		if (settings.economyChannelID && message.channel.id !== settings.economyChannelID) return message.channel.send(`<:Aeo_cross:809875437470875739> You may only use this command in <#${settings.economyChannelID}>`, { embed: null });
 
 		const user = await economyUser.findOne({ userID: message.author.id });
-		if (user?.cooldowns?.GAMBLE > Date.now()) {
+		if (user.cooldowns.GAMBLE > Date.now()) {
 			return message.channel.send(`You must wait **${ms(user.cooldowns.GAMBLE - Date.now())}**`);
 		}
 
@@ -42,13 +42,13 @@ module.exports = {
 			return msg.edit(`${emojis.cross} The command timed-out, please type the command to try again!`, { embed: null });
 		}
 
-		const m = awaited?.first();
-		await m?.delete().catch(() => null);
-		if (m?.content?.toLowerCase() === 'stop') {
+		const m = awaited.first();
+		await m.delete().catch(() => null);
+		if (m.content.toLowerCase() === 'stop') {
 			return msg.edit(`${emojis.tick} Command successfully terminated!`, { embed: null });
 		}
 
-		if (!user?.cash === 0) return msg.edit('You do not have any cash!', { embed: null });
+		if (!user.cash === 0) return msg.edit('You do not have any cash!', { embed: null });
 
 		const amount = Number(m.content) || 0;
 		const money = user && user.balance ? user.balance : 0;

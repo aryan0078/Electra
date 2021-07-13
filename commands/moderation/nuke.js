@@ -20,8 +20,8 @@ module.exports = {
 			{ max: 1, time: 30000, errors: ['time'] }
 		).catch(() => null);
 
-		const m = awaited?.first();
-		if (m?.content?.toLowerCase() !== 'yes') {
+		const m = awaited.first();
+		if (m.content.toLowerCase() !== 'yes') {
 			return msg.edit(`${emojis.tick} Command successfully terminated!`);
 		}
 

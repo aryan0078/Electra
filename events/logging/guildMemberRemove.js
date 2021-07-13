@@ -49,7 +49,7 @@ module.exports = async (client, member) => {
 	let text;
 	const settings = await settingsManager.fetch(member.guild.id);
 
-	if (!settings?.welcome) return;
+	if (!settings.welcome) return;
 	const active = settings.welcome.leave.active;
 	const channel = member.guild.channels.cache.get(settings.welcome.leave.channel);
 
@@ -61,6 +61,6 @@ module.exports = async (client, member) => {
 
 	const type = settings.welcome.leave.type;
 
-	if (!member.guild.me?.permissionsIn(channel.id).has(['SEND_MESSAGES', 'EMBED_LINKS'])) return;
+	if (!member.guild.me.permissionsIn(channel.id).has(['SEND_MESSAGES', 'EMBED_LINKS'])) return;
 	await send(type, text, channel, member);
 };

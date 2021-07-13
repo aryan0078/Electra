@@ -27,13 +27,13 @@ module.exports = {
 			return msg.edit(`${emojis.cross} The command timed-out, please type the command to try again!`);
 		}
 
-		const m = awaited?.first();
+		const m = awaited.first();
 		await m.delete();
-		if (m?.content?.toLowerCase() === 'stop') {
+		if (m.content.toLowerCase() === 'stop') {
 			return msg.edit(`${emojis.tick} Command successfully terminated!`);
 		}
 
-		const ms = duration(m?.content);
+		const ms = duration(m.content);
 		if (!ms) return msg.edit(`${emojis.cross} Please use a proper time format (e.g. 30m, 1h, 1d)`);
 		const reminderCount = await Reminder.countDocuments({ user: message.author.id });
 		if (reminderCount > REMINDER_LIMIT) {
@@ -46,15 +46,15 @@ module.exports = {
 			{ max: 1, time: 30000, errors: ['time'] }
 		).catch(() => null);
 
-		const reason = res?.first();
+		const reason = res.first();
 		await reason.delete();
-		if (reason?.content?.toLowerCase() === 'stop') {
+		if (reason.content.toLowerCase() === 'stop') {
 			return msg.edit(`${emojis.tick} Command successfully terminated!`);
 		}
 
 		await client.utils.remindScheduler.addReminder({
 			user: message.author.id,
-			reason: reason?.content?.substring(0, 1024),
+			reason: reason.content.substring(0, 1024),
 			message: message.url,
 			createdAt: new Date(Date.now() + ms)
 		});

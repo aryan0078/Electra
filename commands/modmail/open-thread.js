@@ -14,8 +14,8 @@ module.exports = {
 	userPermissions: [Permissions.FLAGS.MANAGE_GUILD, Permissions.FLAGS.MANAGE_CHANNELS],
 
 	async execute({ client, message, args, settings }) {
-		const user = await client.users.fetch(args[0]?.match(/\d+/)).catch(() => null);
-		const member = await message.guild.members.fetch(user?.id).catch(() => null);
+		const user = await client.users.fetch(args[0].match(/\d+/)).catch(() => null);
+		const member = await message.guild.members.fetch(user.id).catch(() => null);
 		if (!user || (!client.isOwner(message.author.id) && !member)) {
 			return message.channel.send('⚠️ This user does not have mutual servers with the bot!');
 		}
@@ -27,7 +27,7 @@ module.exports = {
 		const active = await Thread.countDocuments({ recipient: user.id, closed: false });
 		if (active) return message.channel.send('⚠️ You can\'t create another thread with this user.');
 
-		const category = message.guild.channels.cache.get(settings?.modMailSystem?.categoryID);
+		const category = message.guild.channels.cache.get(settings.modMailSystem.categoryID);
 		if (!category) return message.channel.send('⚠️ The ModMail system is not enabled!');
 		const channelName = `${user.username}-${user.discriminator}`;
 

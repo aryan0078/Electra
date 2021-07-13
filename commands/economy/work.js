@@ -29,7 +29,7 @@ module.exports = {
 		if (settings.economyChannelID && message.channel.id !== settings.economyChannelID) return message.channel.send(`You may only use this command in <#${settings.economyChannelID}>`);
 
 		const data = await economyUser.findOne({ userID: message.author.id });
-		if (data?.cooldowns?.WORK > Date.now()) {
+		if (data.cooldowns.WORK > Date.now()) {
 			return message.channel.send(`You must wait **${ms(data.cooldowns.WORK - Date.now())}**`);
 		}
 

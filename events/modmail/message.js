@@ -30,7 +30,7 @@ async function open(client, message) {
 
 	const enabledGuilds = Array.from(
 		client.utils.settings.collection()
-			.filter(guild => guild?.modMailSystem?.categoryID)
+			.filter(guild => guild.modMailSystem.categoryID)
 			.values()
 	);
 	if (!enabledGuilds.length) return;
@@ -71,24 +71,24 @@ async function open(client, message) {
 		}
 	);
 
-	if (responses?.size !== 1) {
+	if (responses.size !== 1) {
 		await message.channel.send('Time ran out, if you would still like to contact ModMail then send another message!');
 		return users.delete(message.author.id);
 	}
 
-	const response = responses.first()?.content;
+	const response = responses.first().content;
 	if (!(response >= 1 && response <= guilds.length)) {
 		await message.channel.send('You entered an invalid number that is not listed, please try again!');
 		return users.delete(message.author.id);
 	}
 
-	const guild = client.guilds.cache.get(guilds[response - 1]?.id);
+	const guild = client.guilds.cache.get(guilds[response - 1].id);
 	if (!guild) {
 		await message.channel.send('You entered an invalid number that is not listed, please try again!');
 		return users.delete(message.author.id);
 	}
 
-	const categoryId = enabledGuilds.find(d => d.guildID === guild.id)?.modMailSystem?.categoryID;
+	const categoryId = enabledGuilds.find(d => d.guildID === guild.id).modMailSystem.categoryID;
 	const category = guild.channels.cache.get(categoryId);
 	if (!category) {
 		console.log('Category Channel Found (Modmail)');
@@ -126,18 +126,18 @@ async function open(client, message) {
 				`\`${message.author.createdAt.toDateString()}\``,
 				'',
 				'**Server Join Date:**',
-				`\`${guild.member(message.author)?.joinedAt.toDateString() ?? 'None'}\``,
+				`\`${guild.member(message.author).joinedAt.toDateString() ?? 'None'}\``,
 				'',
 				'**Thread Count:**',
 				`\`${await Thread.countDocuments({ recipient: message.author.id })}\``,
 				'',
 				'**Roles in server:**',
-				guild.member(message.author)?.roles.cache.filter(role => role.id !== guild.id)
+				guild.member(message.author).roles.cache.filter(role => role.id !== guild.id)
 					.map(role => role).join('\n') ?? 'None',
 
 				'',
 				'**Devices**',
-				getDevice(message.author, message.author.presence?.clientStatus)
+				getDevice(message.author, message.author.presence.clientStatus)
 					.join('\n') || '<user_offline>: Offline'
 			].join('\n'),
 			color: client.config.color

@@ -56,7 +56,7 @@ class GivewayManager {
 	}
 
 	async chooseWinners(amount, message, prevUsers) {
-		const users = (await this.getReacted(message))?.filter(u => !prevUsers?.includes(u.id));
+		const users = (await this.getReacted(message)).filter(u => !prevUsers.includes(u.id));
 
 		if (!users || users.size < 1 || amount < 1) return [];
 

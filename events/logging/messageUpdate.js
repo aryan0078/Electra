@@ -24,6 +24,6 @@ module.exports = async (client, oldMessage, newMessage) => {
 			'**Message URL:**',
 			`[Jump To](${newMessage.url})`
 		]);
-	return newMessage.guild?.log({ embeds: [embed] });
+	return newMessage.guild.log({ embeds: [embed] });
 };
 

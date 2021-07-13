@@ -22,7 +22,7 @@ module.exports = async (client, oldMember, newMember) => {
 			type: 'MEMBER_UPDATE',
 			limit: 1
 		}).catch(() => null);
-		const audit = audits?.entries.first();
+		const audit = audits.entries.first();
 		if (!audit) return;
 
 		newMember.guild.log({
@@ -40,7 +40,7 @@ module.exports = async (client, oldMember, newMember) => {
 			type: 'MEMBER_ROLE_UPDATE',
 			limit: 1
 		}).catch(() => null);
-		const audit = audits?.entries.first();
+		const audit = audits.entries.first();
 		if (!audit) return;
 
 		const removed = oldMember.roles.cache.filter(notIn(newMember.roles.cache));

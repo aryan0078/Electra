@@ -14,7 +14,7 @@ module.exports = async (client, guild) => {
 	await botGrowth.updateOne({ timestamp: getISODate() }, { $inc: { deletion: 1, addition: 0 } }, { upsert: true });
 
 	const settings = await client.utils.settings.fetch(guild.id);
-	if (settings?.modMailSystem?.categoryID) {
+	if (settings.modMailSystem.categoryID) {
 		await Thread.updateMany({ guild: guild.id }, { $set: { closed: true } });
 		settings.modMailSystem = null;
 		await settings.save();
@@ -41,5 +41,5 @@ module.exports = async (client, guild) => {
 	const channel = client.channels.cache.get('703583117348307054');
 
 	console.log(`[GUILD REMOVED] (${guild.id}) | ${guild.name}`);
-	return channel?.send('<:leave:728698719742197860> **I left a guild!**', { embed });
+	return channel.send('<:leave:728698719742197860> **I left a guild!**', { embed });
 };

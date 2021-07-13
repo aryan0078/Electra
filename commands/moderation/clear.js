@@ -26,7 +26,7 @@ module.exports = {
 			return channel.temp('The minimum amout is 1 and the maximum is 100!');
 		}
 
-		const user = client.users.cache.get(args[1]?.match(/\d+/)?.[0]);
+		const user = client.users.cache.get(args[1].match(/\d+/).[0]);
 		try {
 			await logUtil.ensureEmbed(channel);
 		} catch (err) {

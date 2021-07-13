@@ -7,18 +7,18 @@ module.exports = async (client, channel, user) => {
 		if (!recipientThread) return;
 
 		const channel = client.channels.cache.get(recipientThread.channel);
-		channel?.startTyping();
+		channel.startTyping();
 		setTimeout(() => {
-			channel?.stopTyping(true);
+			channel.stopTyping(true);
 		}, 5000);
 	} else if (channel.type === 'text') {
 		const recipientThread = await Thread.findOne({ channel: channel.id, closed: false });
-		if (!recipientThread?.dmChannel) return;
+		if (!recipientThread.dmChannel) return;
 
 		const dm = client.channels.cache.get(recipientThread.dmChannel);
-		dm?.startTyping();
+		dm.startTyping();
 		setTimeout(() => {
-			dm?.stopTyping(true);
+			dm.stopTyping(true);
 		}, 5000);
 	}
 };

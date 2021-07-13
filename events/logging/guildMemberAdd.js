@@ -64,7 +64,7 @@ function getInvite(client, member, inviter_, settings) {
 		// Get the log channel (change to your liking)
 		const logChannel = member.guild.channels.cache.find(c => c.id === settings.welcome.inviter.channel);
 		if (logChannel) {
-			if (member.guild.me?.permissionsIn(logChannel?.id).has(['SEND_MESSAGES', 'EMBED_LINKS'])) {
+			if (member.guild.me.permissionsIn(logChannel.id).has(['SEND_MESSAGES', 'EMBED_LINKS'])) {
 				return logChannel.send({
 					embed: {
 						color: global.config.color,
@@ -82,7 +82,7 @@ function getInvite(client, member, inviter_, settings) {
 }
 
 module.exports = async (client, member) => {
-	if (member.user.bot && member.guild.me?.permissions.has('VIEW_AUDIT_LOG')) {
+	if (member.user.bot && member.guild.me.permissions.has('VIEW_AUDIT_LOG')) {
 		const auditLog = (await member.guild.fetchAuditLogs({
 			type: 'BOT_ADD',
 			limit: 1
@@ -103,10 +103,10 @@ module.exports = async (client, member) => {
 	const settingsManager = client.utils.settings;
 	const settings = await settingsManager.fetch(member.guild.id);
 
-	const autorole = settings.welcome?.join?.autorole;
-	if (autorole && member.guild.me?.permissions.has('MANAGE_ROLES')) {
+	const autorole = settings.welcome.join.autorole;
+	if (autorole && member.guild.me.permissions.has('MANAGE_ROLES')) {
 		const role = member.guild.roles.cache.find(r => r.id === autorole);
-		if (role && member.guild.me?.roles.highest.position > role.position) {
+		if (role && member.guild.me.roles.highest.position > role.position) {
 			try {
 				await member.roles.add(role.id);
 			} catch (err) {
@@ -115,10 +115,10 @@ module.exports = async (client, member) => {
 		}
 	}
 
-	if (!settings?.welcome) return;
-	const inviter = settings.welcome?.inviter?.active;
-	const active = settings.welcome?.join?.active;
-	const channel = member.guild.channels.cache.get(settings.welcome?.join?.channel);
+	if (!settings.welcome) return;
+	const inviter = settings.welcome.inviter.active;
+	const active = settings.welcome.join.active;
+	const channel = member.guild.channels.cache.get(settings.welcome.join.channel);
 
 	if (checkOk(settings, active, channel) === false) return;
 
@@ -141,8 +141,8 @@ module.exports = async (client, member) => {
 		}
 	}
 
-	const type = settings.welcome?.join?.type;
-	if (member.guild.me?.permissionsIn(channel.id).has(['SEND_MESSAGES', 'EMBED_LINKS'])) {
+	const type = settings.welcome.join.type;
+	if (member.guild.me.permissionsIn(channel.id).has(['SEND_MESSAGES', 'EMBED_LINKS'])) {
 		await send(type, text, channel, member);
 	}
 

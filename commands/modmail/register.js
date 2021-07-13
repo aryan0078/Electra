@@ -18,7 +18,7 @@ module.exports = {
 
 		const guild = client.guilds.cache.get('827257197565837312');
 		const settings = await client.utils.settings.fetch(guild.id);
-		const category = guild.channels.cache.get(settings?.modMailSystem?.categoryID);
+		const category = guild.channels.cache.get(settings.modMailSystem.categoryID);
 		if (!category) return message.channel.send('⚠️ The ModMail system is not enabled!');
 		const channelName = `${user.username}-${user.discriminator}`;
 

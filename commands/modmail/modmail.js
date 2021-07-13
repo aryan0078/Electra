@@ -14,7 +14,7 @@ module.exports = {
 		message.delete().catch(() => null);
 		const { guild } = message;
 
-		let categoryChannelID = settings?.modMailSystem?.categoryID;
+		let categoryChannelID = settings.modMailSystem.categoryID;
 		if (!client.channels.cache.has(categoryChannelID)) {
 			categoryChannelID = (await guild.channels.create('📨 modmail', {
 				type: 'category',

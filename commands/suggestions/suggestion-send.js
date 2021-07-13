@@ -49,9 +49,9 @@ module.exports = {
 			return msg.edit(`${emojis.cross} The command timed-out, please type the command to try again!`, { embed: null });
 		}
 
-		const m = awaited?.first();
-		if (m?.content?.toLowerCase() === 'stop') {
-			await m?.delete();
+		const m = awaited.first();
+		if (m.content.toLowerCase() === 'stop') {
+			await m.delete();
 			return msg.edit(`${emojis.tick} Command successfully terminated!`, { embed: null });
 		}
 
@@ -89,7 +89,7 @@ module.exports = {
 					**[TH2](https://discord.gg/dusNMvr7ur)**`
 				}
 			]);
-		await message.guild.channels.cache.get(settings.suggestionChannelID)?.send(embed)
+		await message.guild.channels.cache.get(settings.suggestionChannelID).send(embed)
 			.then(async sentMessage => {
 				suggestion = new Suggestions({
 					suggestionID: ID,
@@ -103,7 +103,7 @@ module.exports = {
 				await sentMessage.react('839947260501819402');
 			});
 
-		await m?.delete();
+		await m.delete();
 		return msg.edit(`${emojis.tick} Suggestion successfully sent!`, { embed: null });
 	}
 };

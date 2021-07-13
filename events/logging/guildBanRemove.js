@@ -5,7 +5,7 @@ module.exports = async (client, guild, user) => {
 		limit: 1
 	}).catch(() => null);
 
-	const audit = audits?.entries.first();
+	const audit = audits.entries.first();
 
 	if (!audit || audit.target.id !== user.id) return;
 

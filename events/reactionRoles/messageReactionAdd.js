@@ -20,8 +20,8 @@ module.exports = async (client, reaction, user) => {
 	if (!member) return;
 
 	if (member.roles.cache.has(role.id)) return;
-	if (!member.guild.me?.permissions.has('MANAGE_ROLES')) return;
-	if (role.position > member.guild.me?.roles.highest.position) return;
+	if (!member.guild.me.permissions.has('MANAGE_ROLES')) return;
+	if (role.position > member.guild.me.roles.highest.position) return;
 
 	return member.roles.add(role);
 };

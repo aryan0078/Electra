@@ -30,7 +30,7 @@ module.exports = {
 		if (settings.economyChannelID && message.channel.id !== settings.economyChannelID) return message.channel.send(`<:Aeo_cross:809875437470875739> You may only use this command in <#${settings.economyChannelID}>`);
 
 		const data = await economyUser.findOne({ userID: message.author.id });
-		if (data?.cooldowns?.BEG > Date.now()) {
+		if (data.cooldowns.BEG > Date.now()) {
 			return message.channel.send(`You must wait **${ms(data.cooldowns.BEG - Date.now())}**`);
 		}
 

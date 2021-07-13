@@ -3,20 +3,20 @@ const Thread = require('../../models/thread');
 module.exports = async (client, channel) => {
 	if (channel.type === 'category') {
 		const settings = await client.utils.settings.fetch(channel.guild.id);
-		if (settings?.modMailSystem?.categoryID === channel.id) {
+		if (settings.modMailSystem.categoryID === channel.id) {
 			await Thread.updateMany({ guild: channel.guild.id }, { $set: { closed: true } });
 			settings.modMailSystem = null;
 			await settings.save();
 		}
 	}
 
-	if (!channel.guild?.me?.permissions.has('VIEW_AUDIT_LOG')) return;
+	if (!channel.guild.me.permissions.has('VIEW_AUDIT_LOG')) return;
 	const audits = await channel.guild.fetchAuditLogs({
 		limit: 1,
 		type: 'CHANNEL_DELETE'
 	}).catch(() => null);
 
-	const audit = audits?.entries.first();
+	const audit = audits.entries.first();
 	if (!audit) return;
 
 	if (channel.type === 'category') {
@@ -44,7 +44,7 @@ module.exports = async (client, channel) => {
 					`\`${audit.executor.tag}\``,
 					'',
 					'**Category:**',
-					`\`${channel?.parent?.name ?? 'None'}\``,
+					`\`${channel.parent.name ?? 'None'}\``,
 					'',
 					'**Channel:**',
 					`\`${channel.type === 'text' ? '#' : ''}${channel.name}\``

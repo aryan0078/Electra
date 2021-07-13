@@ -28,8 +28,8 @@ module.exports = {
 			return msg.edit(`${emojis.cross} The command timed-out, please type the command to try again!`, { embed: null });
 		}
 
-		const m = awaited?.first();
-		if (m?.content?.toLowerCase() === 'stop') {
+		const m = awaited.first();
+		if (m.content.toLowerCase() === 'stop') {
 			await m.delete();
 			return msg.edit(`${emojis.tick} Command successfully terminated!`, { embed: null });
 		}

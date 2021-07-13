@@ -26,9 +26,9 @@ module.exports = {
 			return msg.edit(`${emojis.cross} The command timed-out, please type the command to try again!`, { embed: null });
 		}
 
-		const m = awaited?.first();
+		const m = awaited.first();
 		await m.delete();
-		if (m?.content?.toLowerCase() === 'stop') {
+		if (m.content.toLowerCase() === 'stop') {
 			return msg.edit(`${emojis.tick} Command successfully terminated!`, { embed: null });
 		}
 
@@ -43,14 +43,14 @@ module.exports = {
 		}
 
 		const mText = res.first();
-		if (mText?.content?.toLowerCase() === 'stop') {
+		if (mText.content.toLowerCase() === 'stop') {
 			return msg.edit(`${emojis.tick} Command successfully terminated!`, { embed: null });
 		}
 
 		const messageID = m.content.split('/').filter(d => d.length).reverse()[0];
 		const channelID = m.content.split('/').filter(d => d.length).reverse()[1];
 		const channel = message.guild.channels.cache.get(channelID);
-		const foundMsg = await channel?.messages.fetch(messageID).catch(() => null);
+		const foundMsg = await channel.messages.fetch(messageID).catch(() => null);
 		if (!foundMsg) {
 			return msg.edit(
 				'I could not find that message.',

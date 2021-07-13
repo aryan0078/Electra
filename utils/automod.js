@@ -185,7 +185,7 @@ async function massCaps(message) {
 
 async function autoMod(message, settings) {
 	const checks = [];
-	if (message.member?.permissions.any(['ADMINISTRATOR', 'MANAGE_GUILD', 'MANAGE_ROLES', 'MANAGE_CHANNELS', 'BAN_MEMBERS', 'KICK_MEMBERS'])) return;
+	if (message.member.permissions.any(['ADMINISTRATOR', 'MANAGE_GUILD', 'MANAGE_ROLES', 'MANAGE_CHANNELS', 'BAN_MEMBERS', 'KICK_MEMBERS'])) return;
 	if (!settings.autoMod) return Promise.resolve(false);
 	if (settings.autoMod.links) checks.push(isLink(message));
 	if (settings.autoMod.swearing) checks.push(badWord(message));

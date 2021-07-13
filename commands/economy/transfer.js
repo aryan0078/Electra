@@ -27,7 +27,7 @@ module.exports = {
 		if (settings.economyChannelID && message.channel.id !== settings.economyChannelID) return message.channel.send(`You may only use this command in <#${settings.economyChannelID}>`);
 
 		const user = await economyUser.findOne({ userID: message.author.id });
-		if (user?.cooldowns?.TRANSFER > Date.now()) {
+		if (user.cooldowns.TRANSFER > Date.now()) {
 			return message.channel.send(`You must wait **${ms(user.cooldowns.TRANSFER - Date.now())}**`);
 		}
 		const bal = user ? user.cash : 0;
@@ -42,9 +42,9 @@ module.exports = {
 			return msg.edit(`${emojis.cross} The command timed-out, please type the command to try again!`, { embed: null });
 		}
 
-		const m = awaited?.first();
+		const m = awaited.first();
 		await m.delete();
-		if (m?.content?.toLowerCase() === 'stop') {
+		if (m.content.toLowerCase() === 'stop') {
 			return msg.edit(`${emojis.tick} Command successfully terminated!`, { embed: null });
 		}
 
@@ -59,8 +59,8 @@ module.exports = {
 		}
 
 		const mText = res.first();
-		await mText?.delete().catch(() => null);
-		if (mText?.content?.toLowerCase() === 'stop') {
+		await mText.delete().catch(() => null);
+		if (mText.content.toLowerCase() === 'stop') {
 			return msg.edit(`${emojis.tick} Command successfully terminated!`, { embed: null });
 		}
 

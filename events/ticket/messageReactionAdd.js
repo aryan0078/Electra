@@ -16,7 +16,7 @@ module.exports = async (client, reaction, user) => {
 		if (reaction.message.id !== settings.ticketSystem.messageID) return;
 		const category = message.guild.channels.cache.get(settings.ticketSystem.categoryID);
 		const channelName = `${user.username}-${user.discriminator}`;
-		if (category?.children.some(ch => ch.topic?.includes(user.id))) return;
+		if (category.children.some(ch => ch.topic.includes(user.id))) return;
 
 		const ticketChannel = await message.guild.channels.create(channelName, {
 			parent: category,

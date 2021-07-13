@@ -12,7 +12,7 @@ module.exports = {
 	userPermissions: [Permissions.FLAGS.MANAGE_GUILD],
 
 	async execute({ message, settings, args }) {
-		const channel = message.guild.channels.cache.get(args[0]?.match(/\d+/)?.[0]) || message.channel;
+		const channel = message.guild.channels.cache.get(args[0].match(/\d+/).[0]) || message.channel;
 		if (channel.type !== 'text') return;
 		settings.economyChannelID = channel.id;
 		await settings.save();

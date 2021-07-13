@@ -7,7 +7,7 @@ module.exports = async (client, oldGuild, newGuild) => {
 		limit: 1
 	}).catch(() => null);
 
-	const audit = audits?.entries.first();
+	const audit = audits.entries.first();
 	if (!audit) return;
 
 	if (oldGuild.icon !== newGuild.icon) {

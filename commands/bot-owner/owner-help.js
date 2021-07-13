@@ -38,7 +38,7 @@ module.exports = {
 		const settings = await settingsManager.fetch(message.guild.id);
 		const prefix = settings.prefix || config.prefix;
 
-		const alias = args[0]?.toLowerCase().trim();
+		const alias = args[0].toLowerCase().trim();
 		const command = client.commands.get(alias) || client.commands.get(client.aliases.get(alias));
 		if (command) return this.getDesc(message, command, prefix);
 
@@ -46,7 +46,7 @@ module.exports = {
 			.setColor(global.config.color)
 			.setTitle('TH2 OWNER HELP')
 			.setThumbnail(THUMBNAIL);
-		const commands = Array.from(client.commands.filter(cmd => cmd.category?.toLowerCase() === alias).values());
+		const commands = Array.from(client.commands.filter(cmd => cmd.category.toLowerCase() === alias).values());
 		if (commands.length) {
 			embed.setDescription([
 				commands.map(
@@ -83,7 +83,7 @@ module.exports = {
 				`\`${command.description}\``,
 				'',
 				'**Aliases**',
-				command.aliases?.length ? command.aliases.map(alias => `\`${alias}\``).join('\n') : '`None`',
+				command.aliases.length ? command.aliases.map(alias => `\`${alias}\``).join('\n') : '`None`',
 				'',
 				'**Usage**',
 				`\`${prefix}${command.name} ${command.usage ?? ''}\``,
@@ -117,7 +117,7 @@ module.exports = {
 				return msg.edit(`${emojis.tick} Command successfully terminated!`, { embed: null });
 			}
 
-			const category = categories[m?.content - 1] || categories.find(en => en.name.toLowerCase() === m?.content.toLowerCase());
+			const category = categories[m.content - 1] || categories.find(en => en.name.toLowerCase() === m.content.toLowerCase());
 			if (!category) {
 				return msg.edit(
 					`${emojis.cross} Type a valid number, please run the \`${prefix}help\` command again.`,
@@ -161,7 +161,7 @@ module.exports = {
 				return msg.edit(`${emojis.tick} Command successfully terminated!`, { embed: null });
 			}
 
-			const command = commands[m?.content - 1];
+			const command = commands[m.content - 1];
 			if (!command) {
 				return msg.edit(
 					`${emojis.cross} You must type a valid number like \`3\` or \`5\`, run the \`${prefix}help\` command to try again!`,
@@ -176,7 +176,7 @@ module.exports = {
 				`\`${command.description}\``,
 				'',
 				'**Aliases**',
-				command.aliases?.length ? command.aliases.map(alias => `\`${alias}\``).join('\n') : '`None`',
+				command.aliases.length ? command.aliases.map(alias => `\`${alias}\``).join('\n') : '`None`',
 				'',
 				'**Usage**',
 				`\`${prefix}${command.aliases[0] ?? command.name} ${command.usage ?? ''}\``,

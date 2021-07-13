@@ -35,9 +35,9 @@ module.exports = {
 			return msg.edit(`${emojis.cross} The command timed-out, please type the command to try again!`, { embed: null });
 		}
 
-		const m = awaited?.first();
+		const m = awaited.first();
 		await m.delete();
-		if (m?.content?.toLowerCase() === 'stop') {
+		if (m.content.toLowerCase() === 'stop') {
 			return msg.edit(`${emojis.tick} Command successfully terminated!`, { embed: null });
 		}
 
@@ -45,7 +45,7 @@ module.exports = {
 		if (!member) return msg.edit('You must mention someone!', { embed: null });
 
 		const data = await economyUser.findOne({ userID: message.author.id });
-		if (data?.cooldowns?.ROB > Date.now()) {
+		if (data.cooldowns.ROB > Date.now()) {
 			return message.channel.send(`${message.author} You are on cooldown, you must wait: **${ms(data.cooldowns.ROB - Date.now())}**`);
 		}
 

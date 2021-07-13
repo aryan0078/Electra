@@ -20,7 +20,7 @@ module.exports = {
 
 		const member = message.member;
 
-		const userIdMatch = args[0]?.match(/\d+/);
+		const userIdMatch = args[0].match(/\d+/);
 		if (!userIdMatch) return message.channel.send('No user provided!').then(m => temp(m));
 		const userId = userIdMatch[0];
 

@@ -10,7 +10,7 @@ module.exports = async (client, message) => {
 	if (message.author.bot) return;
 	if (client.config.hold.delete(`${message.guild.id}:message_deleted`)) return;
 
-	const ms = Date.now() - message.createdAt?.getTime();
+	const ms = Date.now() - message.createdAt.getTime();
 	if (ms <= 4000) return;
 
 	const mentions = message.mentions.members.concat(message.mentions.roles)

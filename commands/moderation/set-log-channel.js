@@ -14,7 +14,7 @@ module.exports = {
 		const channel = message.channel;
 		await message.delete();
 
-		const channelIdMatch = args[0]?.match(/\d+/) || [message.channel.id];
+		const channelIdMatch = args[0].match(/\d+/) || [message.channel.id];
 		if (!channelIdMatch) return channel.temp('An invalid channel was provided!');
 
 		const channelId = channelIdMatch[0];

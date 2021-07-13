@@ -23,13 +23,13 @@ module.exports = {
 			return msg.edit(`${emojis.cross} The command timed-out, please type the command to try again!`, { embed: null });
 		}
 
-		const m = awaited?.first();
-		if (m?.content?.toLowerCase() === 'stop') {
-			await m?.delete();
+		const m = awaited.first();
+		if (m.content.toLowerCase() === 'stop') {
+			await m.delete();
 			return msg.edit(`${emojis.tick} Command successfully stopped!`, { embed: null });
 		}
 
-		await m?.delete();
+		await m.delete();
 		await msg.edit(client.embed('Please provide the suggestion ID which is placed on the suggestion.'));
 		const res = await message.channel.awaitMessages(
 			msg => msg.author.id === message.author.id,
@@ -41,7 +41,7 @@ module.exports = {
 		}
 
 		const mText = res.first();
-		if (mText?.content?.toLowerCase() === 'stop') {
+		if (mText.content.toLowerCase() === 'stop') {
 			return msg.edit(`Command successfully stopped!`, { embed: null });
 		}
 

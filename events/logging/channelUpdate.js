@@ -37,7 +37,7 @@ module.exports = async (client, oldChannel, newChannel) => {
 			limit: 1
 		}).catch(() => null);
 
-		const audit = audits?.entries.first();
+		const audit = audits.entries.first();
 
 		if (oldChannel.name !== newChannel.name) {
 			newChannel.guild.log({

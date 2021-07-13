@@ -2,8 +2,8 @@ const Discord = require('discord.js');
 const { Permissions } = require('discord.js');
 const emojis = require('../emojis/emojis');
 async function deleteID(client, channelID, messageID) {
-	const message = await client.channels.cache.get(channelID)?.messages.fetch(messageID).catch(() => null);
-	return message?.delete().catch(() => null);
+	const message = await client.channels.cache.get(channelID).messages.fetch(messageID).catch(() => null);
+	return message.delete().catch(() => null);
 }
 
 module.exports = {
@@ -31,9 +31,9 @@ module.exports = {
 			return msg.edit(`${emojis.cross} The command timed-out, please type the command to try again!`, { embed: null });
 		}
 
-		const m = awaited?.first();
-		await m?.delete().catch(() => null);
-		if (m?.content?.toLowerCase() === 'stop') {
+		const m = awaited.first();
+		await m.delete().catch(() => null);
+		if (m.content.toLowerCase() === 'stop') {
 			return msg.edit(`${emojis.tick} Command successfully terminated!`, { embed: null });
 		}
 
@@ -49,7 +49,7 @@ module.exports = {
 
 		const mText = res.first();
 		await mText.delete();
-		if (mText?.content?.toLowerCase() === 'stop') {
+		if (mText.content.toLowerCase() === 'stop') {
 			return msg.edit(`${emojis.tick} Command successfully terminated!`, { embed: null });
 		}
 
@@ -65,17 +65,17 @@ module.exports = {
 
 		const roleT = roleM.first();
 		await roleT.delete();
-		const role = guild.roles.cache.find(r => r.name.toLowerCase() === roleT.content) || guild.roles.cache.get(roleT.content.match(/\d+/)?.[0]);
+		const role = guild.roles.cache.find(r => r.name.toLowerCase() === roleT.content) || guild.roles.cache.get(roleT.content.match(/\d+/).[0]);
 		if (!role) {
 			return msg.edit(`${emojis.cross} Role not found!`, { embed: null });
 		}
 
-		if (mText?.content?.toLowerCase() === 'stop') {
+		if (mText.content.toLowerCase() === 'stop') {
 			return msg.edit(`${emojis.tick} Command successfully terminated!`, { embed: null });
 		}
 
-		await deleteID(client, settings?.ticketSystem?.channelID, settings?.ticketSystem?.messageID);
-		let categoryChannelID = settings?.ticketSystem?.categoryID;
+		await deleteID(client, settings.ticketSystem.channelID, settings.ticketSystem.messageID);
+		let categoryChannelID = settings.ticketSystem.categoryID;
 		if (!client.channels.cache.has(categoryChannelID)) {
 			categoryChannelID = (await guild.channels.create('tickets', {
 				type: 'category',

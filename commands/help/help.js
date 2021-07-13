@@ -15,7 +15,7 @@ module.exports = {
 		const settings = await settingsManager.fetch(message.guild.id);
 		const prefix = settings.prefix || config.prefix;
 
-		const alias = args[0]?.toLowerCase().trim();
+		const alias = args[0].toLowerCase().trim();
 		const command = client.commands.get(alias) || client.commands.get(client.aliases.get(alias));
 		if (command) return this.getDesc(message, command, prefix);
 
@@ -48,7 +48,7 @@ module.exports = {
 				`\`${command.description}\``,
 				'',
 				'**Aliases**',
-				command.aliases?.length ? command.aliases.map(alias => `\`${prefix}${alias}\``).join('\n') : '`None`',
+				command.aliases.length ? command.aliases.map(alias => `\`${prefix}${alias}\``).join('\n') : '`None`',
 				'',
 				'**Usage**',
 				`\`${prefix}${command.name} ${command.usage ?? ''}\``,

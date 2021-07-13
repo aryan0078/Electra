@@ -14,7 +14,7 @@ module.exports = async (client, oldRole, newRole) => {
 		limit: 1
 	}).catch(() => null);
 
-	const audit = audits?.entries.first();
+	const audit = audits.entries.first();
 	if (!audit) return;
 
 	const changes = [];

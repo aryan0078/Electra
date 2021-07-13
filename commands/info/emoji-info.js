@@ -35,9 +35,9 @@ module.exports = {
 			return msg.edit(`${emojisem.cross} The command timed-out, please type the command to try again!`, { embed: null });
 		}
 
-		const m = awaited?.first();
+		const m = awaited.first();
 		await m.delete();
-		if (m?.content?.toLowerCase() === 'stop') {
+		if (m.content.toLowerCase() === 'stop') {
 			return msg.edit(`${emojisem.tick} Command successfully terminated!`, { embed: null });
 		}
 

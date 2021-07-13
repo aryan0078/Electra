@@ -23,8 +23,8 @@ module.exports = {
 			return msg.edit(`${emojis.cross} The command timed-out, please type the command to try again!`, { embed: null });
 		}
 
-		const m = awaited?.first();
-		if (m?.content?.toLowerCase() === 'stop') {
+		const m = awaited.first();
+		if (m.content.toLowerCase() === 'stop') {
 			await m.delete();
 			return msg.edit(`${emojis.tick} Command successfully terminated!`, { embed: null });
 		}
@@ -41,7 +41,7 @@ module.exports = {
 		}
 
 		const mText = res.first();
-		if (mText?.content?.toLowerCase() === 'stop') {
+		if (mText.content.toLowerCase() === 'stop') {
 			return msg.edit(`${emojis.tick} Command successfully terminated!`, { embed: null });
 		}
 
@@ -52,7 +52,7 @@ module.exports = {
 
 		const { guild, author } = message;
 
-		const member = message.guild.member(m?.content?.toLowerCase() === 'self' ? message.author.id : m.mentions.users.first() || m.content);
+		const member = message.guild.member(m.content.toLowerCase() === 'self' ? message.author.id : m.mentions.users.first() || m.content);
 		if (!member) return msg.edit(' I could not find this user!', { embed: null });
 
 		const roleName = mText.content;

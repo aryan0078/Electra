@@ -27,8 +27,8 @@ module.exports = {
 			return msg.edit(`${emojis.cross} The command timed-out, please type the command to try again!`, { embed: null });
 		}
 
-		const m = awaited?.first();
-		if (m?.content?.toLowerCase() === 'stop') {
+		const m = awaited.first();
+		if (m.content.toLowerCase() === 'stop') {
 			return msg.edit(`${emojis.tick} Command successfully terminated!`, { embed: null });
 		}
 
@@ -44,13 +44,13 @@ module.exports = {
 		}
 
 		const mText = res.first();
-		if (mText?.content?.toLowerCase() === 'stop') {
+		if (mText.content.toLowerCase() === 'stop') {
 			return msg.edit(`${emojis.tick} Command successfully terminated!`, { embed: null });
 		}
 
 		mText.delete().catch(() => null);
 
-		const channel = message.guild.channels.cache.get(m.content?.match(/\d+/)?.[0]);
+		const channel = message.guild.channels.cache.get(m.content.match(/\d+/).[0]);
 		if (!channel) return msg.edit('Please mention a valid channel.', { embed: null });
 
 		embed.setDescription(mText.content.substring(0, 2048));

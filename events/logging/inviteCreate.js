@@ -6,7 +6,7 @@ module.exports = async (client, invite) => {
 		.setTitle('Invite Create')
 		.setDescription([
 			'**Actioned by:**',
-			`\`${invite.inviter?.tag ?? 'Unknown'}\``,
+			`\`${invite.inviter.tag ?? 'Unknown'}\``,
 			'',
 			'**Invite:**',
 			`https://discord.gg/${invite.code}`,

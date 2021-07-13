@@ -38,7 +38,7 @@ module.exports = {
 			);
 
 		if (perms.length) return message.channel.send(`${emojis.cross} You require the ${missingPermissions(perms)} to use this command!`);
-		if (/\s/.test(prefix) || prefix?.length > 3) {
+		if (/\s/.test(prefix) || prefix.length > 3) {
 			return message.channel.send('The prefix must be without a space and no more than 3 characters!');
 		}
 
