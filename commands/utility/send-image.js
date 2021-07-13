@@ -49,7 +49,7 @@ module.exports = {
 			return msg.edit(`${emojis.tick} Command successfully terminated!`, { embed: null });
 		}
 
-		const channel = message.guild.channels.cache.get(m.content.match(/\d+/).[0]);
+		const channel = message.guild.channels.cache.get(m.content.match(/\d+/)[0]);
 		if (!channel) return msg.edit('Please mention a valid channel.', { embed: null });
 
 		if (!mText.content.startsWith('http')) {

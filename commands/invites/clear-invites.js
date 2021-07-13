@@ -13,7 +13,7 @@ module.exports = {
 	userPermissions: [Permissions.FLAGS.MANAGE_GUILD],
 
 	async execute({ message, args, client }) {
-		const user = client.users.cache.get(args[1].match(/\d+/).[0]);
+		const user = client.users.cache.get(args[1].match(/\d+/)[0]);
 		if (!user) return message.channel.send(`${emojis.cross} You must mention a valid user!`);
 
 		const invites = await message.guild.fetchInvites().catch(() => []);

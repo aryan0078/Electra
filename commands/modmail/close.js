@@ -36,7 +36,7 @@ module.exports = {
 		const messages = await channel.messages.fetch();
 
 		const text = messages.sort((a, b) => a.createdAt - b.createdAt)
-			.map(m => `[${moment(m.createdAt).utc().format('YYYY-M-D H:m:s')}] ${m.author.tag}: ${m.content || m.embeds.[0].description}`)
+			.map(m => `[${moment(m.createdAt).utc().format('YYYY-M-D H:m:s')}] ${m.author.tag}: ${m.content || m.embeds[0].description}`)
 			.join('\n');
 
 		const user = client.users.cache.get(thread.recipient);

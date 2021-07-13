@@ -13,7 +13,7 @@ module.exports = {
 	userPermissions: [],
 
 	async execute({ message, args, client }) {
-		const guildID = args[0].match(/\d+/).[0];
+		const guildID = args[0].match(/\d+/)[0];
 
 		const guild = client.guilds.cache.get(guildID);
 		if (!guild) {

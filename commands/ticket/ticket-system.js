@@ -65,7 +65,7 @@ module.exports = {
 
 		const roleT = roleM.first();
 		await roleT.delete();
-		const role = guild.roles.cache.find(r => r.name.toLowerCase() === roleT.content) || guild.roles.cache.get(roleT.content.match(/\d+/).[0]);
+		const role = guild.roles.cache.find(r => r.name.toLowerCase() === roleT.content) || guild.roles.cache.get(roleT.content.match(/\d+/)[0]);
 		if (!role) {
 			return msg.edit(`${emojis.cross} Role not found!`, { embed: null });
 		}

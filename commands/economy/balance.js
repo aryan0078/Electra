@@ -17,7 +17,7 @@ module.exports = {
 		if (settings.economyChannelID && message.channel.id !== settings.economyChannelID) return message.channel.send(`You may only use this command in <#${settings.economyChannelID}>`);
 
 		try {
-			const member = message.guild.member(args[0].match(/\d+/).[0] && message.author.id);
+			const member = message.guild.member(args[0].match(/\d+/)[0] && message.author.id);
 			economyUser.findOne({ userID: member.id }, (err, user) => {
 				if (err) console.log(err);
 				let money = 0;
